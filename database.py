@@ -3,7 +3,7 @@ import sqlite3
 
 class Database:
     def __init__(self):
-        self.con = sqlite3.connect("todolist.db")
+        self.con = sqlite3.connect("dolist.db")
         self.cursor = self.con.cursor()
 
     def get_tasks(self):
@@ -20,3 +20,6 @@ class Database:
             return True
         except:
             return False
+
+
+    def task_done(self, id): ...

@@ -4,6 +4,7 @@ from PySide6.QtCore import Qt
 from PySide6.QtWidgets import *
 from main_window import Ui_MainWindow
 from database import Database
+from functools import partial
 
 
 class MainWindow(QMainWindow):
@@ -14,6 +15,7 @@ class MainWindow(QMainWindow):
         self.db = Database()
         self.read_from_db()
         self.ui.pushButton.clicked.connect(self.new_task)
+        
 
     def read_from_db(self):
         tasks = self.db.get_tasks()
@@ -23,14 +25,18 @@ class MainWindow(QMainWindow):
             new_label_2 = QLabel()
             new_label.setText(tasks[i][1])
             new_label_2.setText(tasks[i][2])
+            new_btn = QPushButton()
+            btn_name = str(tasks[i][0])
+            new_btn.setText("❌")
 
             self.ui.gl_tasks.addWidget(new_check_box, i, 0)
             self.ui.gl_tasks.addWidget(new_label, i, 1)
             self.ui.gl_tasks.addWidget(new_label_2, i, 2)
-            self.ui.tb_new_task.setText('')
-            self.ui.tb_new_desc.setText('')
+            self.ui.gl_tasks.addWidget(new_btn, i, 3)
+            self.ui.tb_new_task.setText("")
+            self.ui.tb_new_desc.setText("")
 
-    def new_task(self): 
+    def new_task(self):
         msgbox = QMessageBox()
         new_title = self.ui.tb_new_task.text()
         new_desc = self.ui.tb_new_desc.toPlainText()
@@ -40,9 +46,8 @@ class MainWindow(QMainWindow):
         else:
             msgbox.setText("مشکلی رخ داده است")
             msgbox.exec()
-        
 
-
+    
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
