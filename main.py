@@ -80,9 +80,9 @@ class MainWindow(QMainWindow):
             # check button
             new_check_box = QPushButton()
             if tasks[i][3] == 1:
-                new_check_box.setStyleSheet('image: url("check.png");border:none;')
+                new_check_box.setStyleSheet('image: url(":/btn/check.png");border:none;')
             else:
-                new_check_box.setStyleSheet('image: url("empty.png");border:none;')
+                new_check_box.setStyleSheet('image: url(":btn/empty.png");border:none;')
 
             new_check_box.setMaximumHeight(41)
             new_check_box.setMaximumWidth(41)
@@ -109,7 +109,7 @@ class MainWindow(QMainWindow):
             new_btn.setObjectName("d" + str(tasks[i][0]))
             new_btn.setMaximumHeight(31)
             new_btn.setMaximumWidth(31)
-            new_btn.setStyleSheet('image: url("trash.png");border:none;')
+            new_btn.setStyleSheet('image: url(":/btn/trash.png");border:none;')
             new_btn.setCursor(Qt.PointingHandCursor)
             new_btn.clicked.connect(partial(self.del_task, "c" + str(tasks[i][0])))
 
