@@ -1,0 +1,8 @@
+<RCC>
+  <qresource prefix="btn">
+    <file>plus.png</file>
+    <file>check.png</file>
+    <file>empty.png</file>
+    <file>back.png</file>
+  </qresource>
+</RCC>
